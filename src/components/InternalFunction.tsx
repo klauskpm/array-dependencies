@@ -2,21 +2,19 @@ import { useEffect } from 'react';
 
 import { useMyHook } from '../hooks/useMyHook';
 
-function PureFunction() {
+function InternalFunction() {
   const { bar, baz, changeBar, changeBaz } = useMyHook();
 
-  const foo = (a: number, b: number) => {
-    return a + b;
-  };
-
   useEffect(() => {
+    const foo = (a: number, b: number) => {
+      return a + b;
+    };
     console.log('foo', foo(bar, baz));
-    // eslint-disable-next-line
   }, [bar, baz]);
 
   return (
     <div>
-      <p>Pure function</p>
+      <p>Internal function</p>
       <button onClick={() => changeBar()}>change bar</button>
       <span>bar value: {bar}</span>
       <button onClick={() => changeBaz()}>change baz</button>
@@ -25,4 +23,4 @@ function PureFunction() {
   );
 }
 
-export default PureFunction;
+export default InternalFunction;

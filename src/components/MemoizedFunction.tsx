@@ -1,22 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 import { useMyHook } from '../hooks/useMyHook';
 
-function PureFunction() {
+function MemoizedFunction() {
   const { bar, baz, changeBar, changeBaz } = useMyHook();
 
-  const foo = (a: number, b: number) => {
+  const foo = useCallback((a: number, b: number) => {
     return a + b;
-  };
+  }, []);
 
   useEffect(() => {
     console.log('foo', foo(bar, baz));
-    // eslint-disable-next-line
   }, [bar, baz]);
 
   return (
     <div>
-      <p>Pure function</p>
+      <p>Memoized function</p>
       <button onClick={() => changeBar()}>change bar</button>
       <span>bar value: {bar}</span>
       <button onClick={() => changeBaz()}>change baz</button>
@@ -25,4 +24,4 @@ function PureFunction() {
   );
 }
 
-export default PureFunction;
+export default MemoizedFunction;
