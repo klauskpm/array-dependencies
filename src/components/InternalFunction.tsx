@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useMyHook } from '../hooks/useMyHook';
 
 function InternalFunction() {
-  const { bar, baz, changeBar, changeBaz } = useMyHook();
+  const { bar, baz, buz, changeBar, changeBaz, changeBuz } = useMyHook();
 
   useEffect(() => {
     const foo = (a: number, b: number) => {
@@ -15,10 +15,18 @@ function InternalFunction() {
   return (
     <div>
       <p>Internal function</p>
-      <button onClick={() => changeBar()}>change bar</button>
-      <span>bar value: {bar}</span>
-      <button onClick={() => changeBaz()}>change baz</button>
-      <span>baz value: {baz}</span>
+      <div>
+        <button onClick={() => changeBar()}>change bar</button>
+        <span>bar value: {bar}</span>
+      </div>
+      <div>
+        <button onClick={() => changeBaz()}>change baz</button>
+        <span>baz value: {baz}</span>
+      </div>
+      <div>
+        <button onClick={() => changeBuz()}>change buz</button>
+        <span>buz value: {buz}</span>
+      </div>
     </div>
   );
 }
