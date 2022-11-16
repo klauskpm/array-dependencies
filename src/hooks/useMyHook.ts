@@ -7,7 +7,7 @@ const getRandomValue = (limit = 80) => {
 export const useMyHook = () => {
   const [bar, setBar] = useState(1);
   const [baz, setBaz] = useState(2);
-  const [buz, setBuz] = useState(2);
+  const [buz, setBuz] = useState(3);
 
   const changeBar = () => setBar(getRandomValue());
   const changeBaz = () => setBaz(getRandomValue());
